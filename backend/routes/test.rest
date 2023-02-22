@@ -1,0 +1,6 @@
+POST https:/localhost:5000/save
+content-type: raw
+
+{
+    "text": "sample"
+}
