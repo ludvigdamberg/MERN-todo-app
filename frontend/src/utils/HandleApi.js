@@ -29,4 +29,24 @@ const addTodo = (text,setText,setTodo) => {
 
 }
 
-export {getAllToDos, addTodo}
+const updateTodo = (toDoId,text,setTodo,setText,setIsUpdating) => {
+
+    axios.post(`${url}/update`,{_id: toDoId, text})
+    .then((data) => {
+        console.log(data)
+        setText("")
+        setIsUpdating(false)
+        getAllToDos(setTodo)
+    })
+    .catch((err) => console.log(err))
+
+}
+
+const deleteTodo = (_id,setTodo) => {
+    axios.post(`${url}/delete`,{ _id })
+    .then(console.log("Delete successfull!"))
+    getAllToDos(setTodo)
+}
+
+
+export {getAllToDos, addTodo, updateTodo,  deleteTodo}
